@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            /* רקע שקוף */
+            background: transparent; 
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        .scene {
+            perspective: 1200px;
+            width: 400px;
+            height: 500px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* הגדרת דף בודד */
+        .page {
+            position: absolute;
+            width: 180px;
+            height: 240px;
+            /* אומברה אדום-כתום */
+            background: linear-gradient(to bottom, #FF8C00, #FF0000);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            opacity: 0;
+            /* זוהר שמתאים לרקע שקוף */
+            filter: drop-shadow(0 0 15px rgba(255, 50, 0, 0.6));
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            box-sizing: border-box;
+            transform-style: preserve-3d;
+        }
+
+        /* טקסט פנימי זוהר */
+        .page::before {
+            content: "§ LEGAL INFO";
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 11px;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        /* אנימציית הנפילה והערמה - ללא חזרה (forwards) */
+        @keyframes fallAndStack {
+            0% {
+                transform: translateY(-900px) rotateX(45deg) rotateY(15deg) rotateZ(10deg);
+                opacity: 0;
+            }
+            20% { 
+                opacity: 1; 
+            }
+            100% {
+                /* נחיתה והישארות בערימה */
+                transform: translateY(var(--stack-height)) rotateX(70deg) rotateZ(var(--rotation));
+                opacity: 1;
+            }
+        }
+
+        /* הגדרות לכל דף - כל דף נשאר במקומו */
+        .p1 { --stack-height: 120px; --rotation: 2deg;  animation: fallAndStack 3s forwards 0.5s; }
+        .p2 { --stack-height: 116px; --rotation: -3deg; animation: fallAndStack 3s forwards 1.3s; }
+        .p3 { --stack-height: 112px; --rotation: 4deg;  animation: fallAndStack 3s forwards 2.1s; }
+        .p4 { --stack-height: 108px; --rotation: -2deg; animation: fallAndStack 3s forwards 2.9s; }
+        .p5 { --stack-height: 104px; --rotation: 1deg;  animation: fallAndStack 3s forwards 3.7s; }
+
+        /* זוהר רצפה עדין */
+        .glow-base {
+            position: absolute;
+            bottom: 80px;
+            width: 400px;
+            height: 150px;
+            background: radial-gradient(ellipse, rgba(255, 50, 0, 0.35) 0%, transparent 75%);
+            filter: blur(30px);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="scene">
+    <div class="glow-base"></div>
+    <div class="page p1"></div>
+    <div class="page p2"></div>
+    <div class="page p3"></div>
+    <div class="page p4"></div>
+    <div class="page p5"></div>
+</div>
+
+</body>
+</html>

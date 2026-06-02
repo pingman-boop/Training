@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Cyber Shield Sponsor</title>
+
+<style>
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent; /* הרקע שקוף לחלוטין */
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* CONTAINER */
+.shield-container {
+    width: 100%;
+    max-width: 150px;     /* <--- שנה את המספר הזה חופשי! הקטנתי ל-150px כדי שתוכל לראות שזה עובד מושלם גם בקטן */
+    aspect-ratio: 1 / 1;
+    position: relative;
+}
+
+/* SVG RESPONSIVE FIX + PULSE */
+.shield-container svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transform-origin: center;
+    animation: softPulse 4s ease-in-out infinite;
+}
+
+/* SOFT PULSE - זוהר מוקטן, הדוק ועדין שאינו נחתך בריבוע */
+@keyframes softPulse {
+    0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 6px rgba(52,211,255,0.45)); /* פולס קטן וממוקד */
+    }
+    50% {
+        transform: scale(1.02);
+        filter: drop-shadow(0 0 12px rgba(52,211,255,0.7)); /* טווח מקסימלי קטן משמעותית */
+    }
+}
+
+/* BORDER FLOW */
+.border-flow {
+    stroke-dasharray: 1800;
+    stroke-dashoffset: 1800;
+    animation: borderFlow 12s linear infinite;
+}
+
+@keyframes borderFlow {
+    from { stroke-dashoffset: 1800; }
+    to { stroke-dashoffset: 0; }
+}
+
+/* FLOATING PARTICLES */
+.particle {
+    animation: float 5s ease-in-out infinite;
+    transform-origin: center;
+}
+
+.particle:nth-child(2) { animation-delay: 1s; }
+.particle:nth-child(3) { animation-delay: 2s; }
+.particle:nth-child(4) { animation-delay: 3s; }
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+        opacity: .4;
+    }
+    50% {
+        transform: translateY(-8px);
+        opacity: 1;
+    }
+}
+
+/* TEXT GLOW */
+.main-text {
+    animation: textGlow 3s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+    0%, 100% { opacity: 0.92; }
+    50% { opacity: 1; }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="shield-container">
+
+<svg viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+    <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#38D6FF"/>
+        <stop offset="50%" stop-color="#2D8CFF"/>
+        <stop offset="100%" stop-color="#7A5CFF"/>
+    </linearGradient>
+
+    <filter id="glow" x="-10%" y="-10%" width="120%" height="120%">
+        <feGaussianBlur stdDeviation="3" result="blur"/>
+        <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+    </filter>
+</defs>
+
+<g transform="translate(100, 100)">
+
+    <path
+        d="
+        M250 40
+        L395 88
+        L395 255
+        Q395 350 250 455
+        Q105 350 105 255
+        L105 88
+        Z
+        "
+        fill="#041A38"
+        opacity="0.96"
+    />
+
+    <path
+        class="border-flow"
+        d="
+        M250 40
+        L395 88
+        L395 255
+        Q395 350 250 455
+        Q105 350 105 255
+        L105 88
+        Z
+        "
+        fill="none"
+        stroke="url(#shieldGradient)"
+        stroke-width="4"
+        filter="url(#glow)"
+    />
+
+    <path
+        d="
+        M250 58
+        L378 98
+        L378 248
+        Q378 335 250 430
+        Q122 335 122 248
+        L122 98
+        Z
+        "
+        fill="none"
+        stroke="rgba(140,210,255,0.2)"
+        stroke-width="1.4"
+    />
+
+    <line x1="130" y1="120" x2="170" y2="120" stroke="#38D6FF" stroke-opacity="0.7"/>
+    <line x1="130" y1="120" x2="130" y2="165" stroke="#38D6FF" stroke-opacity="0.7"/>
+    <line x1="370" y1="120" x2="330" y2="120" stroke="#7A5CFF" stroke-opacity="0.7"/>
+    <line x1="370" y1="120" x2="370" y2="165" stroke="#7A5CFF" stroke-opacity="0.7"/>
+
+    <text
+        class="main-text"
+        x="250"
+        y="205"
+        text-anchor="middle"
+        fill="white"
+        font-size="45"
+        font-weight="700"
+        letter-spacing="0.3">
+        הלוגו שלך
+    </text>
+
+    <text
+        class="main-text"
+        x="250"
+        y="255"
+        text-anchor="middle"
+        fill="white"
+        font-size="45"
+        font-weight="700"
+        letter-spacing="0.3">
+        יכול להיות
+    </text>
+
+    <text
+        class="main-text"
+        x="250"
+        y="305"
+        text-anchor="middle"
+        fill="white"
+        font-size="45"
+        font-weight="700"
+        letter-spacing="0.3">
+        כאן
+    </text>
+
+    <circle class="particle" cx="155" cy="150" r="3" fill="#38D6FF"/>
+    <circle class="particle" cx="335" cy="145" r="2.5" fill="#7A5CFF"/>
+    <circle class="particle" cx="175" cy="340" r="3" fill="#38D6FF"/>
+    <circle class="particle" cx="325" cy="350" r="3" fill="#7A5CFF"/>
+    <circle class="particle" cx="250" cy="395" r="4" fill="#38D6FF"/>
+
+</g>
+
+</svg>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<div class="stack-wrapper">
+  <div class="paper-stack">
+    <div class="paper-page page-3">
+      <div class="legal-badge"></div>
+      <div class="document-header">נספח ג'</div>
+      <h3>סנקציות וענישה</h3>
+      <p>שיתוף יתר: מתן הרשאות עריכה או גישה לקבצים לאנשים שאינם זקוקים להם לצורך עבודתם..</p>
+    </div>
+    
+    <div class="paper-page page-2">
+      <div class="legal-badge"></div>
+      <div class="document-header">נספח ב'</div>
+      <h3>טעויות נפוצות</h3>
+      <p>שליחה לאדם הלא נכון: טעות אנוש קטנה (כמו השלמה אוטומטית במייל) שעלולה לגרום לדליפת מידע רגיש..</p>
+    </div>
+    
+    <div class="paper-page page-1">
+      <div class="legal-badge"></div>
+      <div class="document-header">נספח א'</div>
+      <h3>הגנת הפרטיות - טעויות וענישה</h3>
+      <p>קנסות כבדים: חשיפה לסנקציות כספיות משמעותיות מצד הרשויות (כמו הרשות להגנת הפרטיות).</p>
+    </div>
+  </div>
+</div>
+
+<style>
+/* מכל חיצוני קומפקטי - מונע חיתוך בצדדים */
+.stack-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 20px 5px;
+  background-color: transparent;
+  direction: rtl;
+  box-sizing: border-box;
+}
+
+/* גודל קומפקטי במיוחד */
+.paper-stack {
+  position: relative;
+  width: 130px;  
+  height: 180px; 
+}
+
+/* עיצוב דף חוזה חלק ונקי בגודל מינימלי */
+.paper-page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 1px;
+  padding: 10px 8px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* כותרת עליונה זעירה */
+.document-header {
+  font-family: "David", "Times New Roman", serif;
+  font-size: 8px;
+  color: #718096; /* כחלחל אפור עמום */
+  text-align: left;
+  margin-bottom: 2px;
+  letter-spacing: 0.5px;
+}
+
+/* כותרת הסעיף המוקטנת */
+.paper-page h3 {
+  margin-top: 0;
+  margin-bottom: 6px;
+  color: #1a2a3a; /* כחול כהה מאוד */
+  font-family: "David", "Times New Roman", serif;
+  font-size: 10.5px;
+  font-weight: bold;
+  border-bottom: 1px solid #2b4c7e; /* קו תחתון כחול */
+  padding-bottom: 2px;
+}
+
+/* טקסט משפטי קטן ותמציתי */
+.paper-page p {
+  color: #2d3748;
+  font-size: 8px;
+  line-height: 11.5px;
+  margin: 0;
+  text-align: justify;
+}
+
+/* מדבקת חותמת רשמית זעירה בתחתית הדף */
+.legal-badge {
+  position: absolute;
+  bottom: 8px;  
+  left: 8px;    
+  width: 12px;  
+  height: 12px; 
+  background: #1a365d; /* חותמת בכחול כהה רשמי במקום אדום */
+  border-radius: 50%;
+  opacity: 0.85;
+}
+
+/* הגדרת גווני הכחול הדרגתיים לדפים + אנימציה */
+.page-1 {
+  z-index: 3;
+  background: #f0f4f8; /* כחלחל בהיר ונקי */
+  border: 1px solid #b4c6d8;
+  animation: legalStackPage1 8s ease-in-out infinite;
+}
+
+.page-2 {
+  z-index: 2;
+  background: #e1e9f0; /* כחלחל מעט כהה יותר בשביל העומק */
+  border: 1px solid #a3b8cc;
+  animation: legalStackPage2 8s ease-in-out infinite;
+}
+
+.page-3 {
+  z-index: 1;
+  background: #d2dee8; /* הכחול הכהה בערימה */
+  border: 1px solid #92a9bf;
+  animation: legalStackPage3 8s ease-in-out infinite;
+}
+
+/* תנועת פתיחה קטנה ועדינה מותאמת לגודל החדש */
+@keyframes legalStackPage1 {
+  0%, 15%, 85%, 100% { transform: rotate(-1deg); }
+  35%, 65% { transform: translate(55px, -5px) rotate(3deg); box-shadow: -2px 4px 8px rgba(0, 0, 0, 0.08); }
+}
+
+@keyframes legalStackPage2 {
+  0%, 15%, 85%, 100% { transform: translate(-3px, 3px) rotate(1deg); }
+  35%, 65% { transform: translate(0px, -4px) rotate(-1deg); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); }
+}
+
+@keyframes legalStackPage3 {
+  0%, 15%, 85%, 100% { transform: translate(-6px, 6px) rotate(-2deg); }
+  35%, 65% { transform: translate(-55px, -5px) rotate(-3deg); box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.08); }
+}
+</style>
